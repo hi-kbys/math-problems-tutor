@@ -8,14 +8,30 @@ services:
       - "8000:8000"
     volumes:
       - ./mpt_app:/app/mpt_app
-  mpt-ui:
+  mpt_ui:
     build: 
-      context: ./mpt-ui
+      context: ./mpt_ui
       dockerfile: ../Dockerfile.ui
     ports:
       - "3000:3000"
     volumes:
-      - ./mpt-ui:/app
+      - ./mpt_ui:/app
     depends_on:
       - mpt_app
   
+  db:
+    image: mysql:8.0
+    container_name: db
+    platform: linux/x86_64
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: 'mpt'
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - mpt-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mpt-data:  

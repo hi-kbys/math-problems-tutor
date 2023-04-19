@@ -13,7 +13,7 @@ class ProblemCreateResponse(ProblemBase):
     class Config:
         orm_mode = True
 
-class ProblemUpdate(ProblemBase):
+class Problem(ProblemBase):
     id : int
     is_solved: bool = Field(False, 
                             description="Whether the problem is solved or not")
