@@ -1,13 +1,13 @@
 version: '3'
 services:
-  mpt-app:
+  mpt_app:
     build:
       context: .
       dockerfile: Dockerfile.app
     ports:
       - "8000:8000"
     volumes:
-      - ./mpt-app:/app/mpt-app
+      - ./mpt_app:/app/mpt_app
   mpt-ui:
     build: 
       context: ./mpt-ui
@@ -17,5 +17,5 @@ services:
     volumes:
       - ./mpt-ui:/app
     depends_on:
-      - mpt-app
+      - mpt_app
   

@@ -7,4 +7,4 @@ RUN poetry config virtualenvs.in-project true
 COPY poetry.lock* pyproject.toml* ./
 RUN poetry install --no-root --no-dev
 EXPOSE 8000
-CMD ["poetry", "run", "uvicorn", "mpt-app.main:app", "--host", "0.0.0.0", "--reload"]
+CMD ["poetry", "run", "uvicorn", "mpt_app.main:app", "--host", "0.0.0.0", "--reload"]
