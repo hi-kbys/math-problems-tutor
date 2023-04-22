@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from mpt_app.routers import problem
+
 app = FastAPI()
 
 origins = [
@@ -15,6 +17,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def Hello():
-    return {"Hello":"World!"}
+app.include_router(problem.router)
