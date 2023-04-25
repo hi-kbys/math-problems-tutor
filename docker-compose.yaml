@@ -16,6 +16,7 @@ services:
       - "3000:3000"
     volumes:
       - ./mpt_ui:/app
+      - mpt_ui_node_modules:/app/node_modules
     depends_on:
       - mpt_app
   
@@ -35,3 +36,4 @@ services:
 
 volumes:
   mpt-data:  
+  mpt_ui_node_modules:
