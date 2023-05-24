@@ -11,4 +11,8 @@ router = APIRouter()
 async def get_problems(db: AsyncSession = Depends(get_db)):
     return await problem_crud.get_problems(db)
 
+@router.post("/problems", response_model=problem_schema.ProblemCreateResponse)
+async def create_problems(problem: problem_schema.ProblemCreate, db: AsyncSession = Depends(get_db)):
+    return await problem_crud.create_problems(db, problem)
+
 # @router.put("/problems/{problem_id}", response_model=problem_schema.Problem)
