@@ -13,6 +13,15 @@ async def get_problems(
         problem_model.Problem.id, 
         problem_model.Problem.title, 
         problem_model.Problem.statement, 
-        problem_model.Problem.is_solved)
+        problem_model.Problem.is_solved
+        )
     )
     return result.all()
+
+async def create_problems(
+        db: AsyncSession, problem_create: problem_schema.ProblemCreate) -> problem_model.Problem:
+    problem = problem_model.Problem(**problem_create.dict())
+    db.add(problem)
+    await db.commit()
+    await db.refresh(problem)
+    return problem

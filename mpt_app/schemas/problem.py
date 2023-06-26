@@ -17,3 +17,7 @@ class Problem(ProblemBase):
     id : int
     is_solved: bool = Field(False, 
                             description="Whether the problem is solved or not")
+
+    class Config:
+        orm_mode = True
+    
