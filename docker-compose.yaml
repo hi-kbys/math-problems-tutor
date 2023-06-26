@@ -7,7 +7,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./mpt_app:/app/mpt_app
+      - .:/app
+    command: poetry run uvicorn mpt_app.main:app --host 0.0.0.0 --reload
   mpt_ui:
     build: 
       context: ./mpt_ui
@@ -19,6 +20,7 @@ services:
       - mpt_ui_node_modules:/app/node_modules
     depends_on:
       - mpt_app
+    command: yarn start
   
   db:
     image: mysql:8.0
