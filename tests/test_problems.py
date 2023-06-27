@@ -8,7 +8,7 @@ import starlette.status
 from mpt_app.main import app
 from mpt_app.db import Base, get_db
 
-ASYNC_DB_URL = "sqllite+aiosqlite:///:memory:"
+ASYNC_DB_URL = "sqlite+aiosqlite:///:memory:"
 
 @pytest_asyncio.fixture
 async def async_client():
@@ -19,7 +19,7 @@ async def async_client():
     )
 
     # Create tables
-    async with async_session.begin() as conn:
+    async with async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
 
@@ -37,5 +37,13 @@ async def async_client():
 async def test_create_and_read(async_client: AsyncClient):
     response = await async_client.post(
         "/problems",
-        json={}
+        json={"title": "test", "statement": "test_statement"},
     )
+    assert response.status_code == starlette.status.HTTP_200_OK
+    
+    response = await async_client.get("/problems")
+    assert response.status_code == starlette.status.HTTP_200_OK
+    response_json = response.json()
+    assert response_json[0]["title"] == "test"
+    assert response_json[0]["statement"] == "test_statement"
+    
