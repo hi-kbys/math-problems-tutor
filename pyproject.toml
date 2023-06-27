@@ -17,6 +17,8 @@ mysql-connector-python = "^8.0.33"
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.0"
 pytest-asyncio = "^0.21.0"
+httpx = "^0.24.1"
+aiosqlite = "^0.19.0"
 
 [build-system]
 requires = ["poetry-core"]

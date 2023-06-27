@@ -7,7 +7,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - .:/app:cached
+      - mpt_app_venv:/app/.venv
     command: poetry run uvicorn mpt_app.main:app --host 0.0.0.0 --reload
   mpt_ui:
     build: 
@@ -39,3 +40,4 @@ services:
 volumes:
   mpt-data:  
   mpt_ui_node_modules:
+  mpt_app_venv:
