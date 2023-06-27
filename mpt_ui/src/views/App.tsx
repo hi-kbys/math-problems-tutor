@@ -4,6 +4,16 @@ import axios, {AxiosResponse} from "axios";
 type Hello = {
   Hello: string;
 }
+
+// ヘッダーの実装
+const Header: React.FC = () => {
+	return (
+		<div>
+			<h1>ヘッダー</h1>
+		</div>
+	);
+}
+
 function App() {
 	const [data, setData] = useState<Hello>();
 	const url: string = "http://127.0.0.1:8000";
