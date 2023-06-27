@@ -1,34 +1,56 @@
 import React, {useState} from "react";
 import axios, {AxiosResponse} from "axios";
+import './App.css';
 
-type Hello = {
-  Hello: string;
+
+type AppHeaderContainerProps = {
+	children: React.ReactNode;
 }
 
-// ヘッダーの実装
-const Header: React.FC = () => {
+const AppHeaderContainer: React.FC<AppHeaderContainerProps> = (props) => {
+	// ヘッダーの枠
 	return (
-		<div>
-			<h1>ヘッダー</h1>
+		<div className="App-header">
+			{props.children}
 		</div>
 	);
+}
+
+type AppHeaderProps = {
+	title: string;
+}
+
+
+const Title: React.FC<AppHeaderProps> = (props) => {
+	// タイトル(ロゴになる)
+	return (
+		<div>{props.title}</div>
+	);
+}
+
+// コンテンツの枠
+type ContentsContainerProps = {
+	children: React.ReactNode;
+}
+
+const ContentsContainer: React.FC<ContentsContainerProps> = (props) => {
+	return (
+		<div className="App-Contents">
+			{props.children}
+		</div>
+	)
 }
 
 function App() {
-	const [data, setData] = useState<Hello>();
-	const url: string = "http://127.0.0.1:8000";
-
-	const GetData = () => {
-		axios.get(url).then((res: AxiosResponse<Hello>) => {
-			setData(res.data);
-		});
-	};
 	return (
 		<div>
-			<div>ここに処理を書いていきます</div>
-			{data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
+			<AppHeaderContainer>
+				<Title title="Math Problems Tutor"/>
+			</AppHeaderContainer>
+			<ContentsContainer>
+			</ContentsContainer>
 		</div>
-	);
+	)
 }
 
 export default App;
