@@ -37,6 +37,15 @@
     フロントはhttp://localhost:3000 にアクセスして、Reactの画面が表示されればOKです。
     バックエンドはhttp://localhost:8000/docs にアクセスして、FastAPIのOpenAPIの管理画面が表示されればOKです。
 
+## 2.VsCodeでの開発
+Remote Containerを使用して開発しています。
+
+1. Remote Containerをインストール
+1. >Remote-Containers: Open Folder in Container... でこのリポジトリを開く
+### 注意点
+1. GitはRemote Container内ではなく、ホスト側で行う(この辺は後でできるようになるかも？？)
+
+
 # 開発ルールについて
 ## prefixについて
 コミットメッセージのprefixについては以下のようにします。
