@@ -41,4 +41,50 @@
   background: var(--second, #BADBF3);
   width: 1920px;
   height: 1080px;
+  
+  /* 余白で子要素を中央に持ってくる */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-Contents-Frame{
+  width: 1495px;
+  height: 955px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--d-9-d-9-d-9, #FAFDFF);  
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.App-Chapter-Box{
+  width: 452px;
+  height: 88px;
+  flex-shrink: 0;
+  background: #2693E1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-Chapter-Text-Frame{
+  display: flex;
+  width: 160px;
+  height: 44.376px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.App-Chapter-Text{
+  color: #FFF;
+  text-align: center;
+  font-size: 32px;
+  font-family: Hanuman;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
