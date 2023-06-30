@@ -10,9 +10,9 @@ type AppHeaderContainerProps = {
 const AppHeaderContainer: React.FC<AppHeaderContainerProps> = (props) => {
 	// ヘッダーの枠
 	return (
-		<div className="App-header">
+		<header className="App-header">
 			{props.children}
-		</div>
+		</header>
 	);
 }
 
