@@ -20,7 +20,6 @@ type AppHeaderProps = {
 	title: string;
 }
 
-
 const Title: React.FC<AppHeaderProps> = (props) => {
 	// タイトル(ロゴになる)
 	return (
@@ -55,24 +54,25 @@ const ContentsFrame: React.FC<ContentsFrameProps> = (props) => {
 }
 
 function App() {
-	const chapters: string[] = ['Chapter1', 'Chapter2', 'Chapter3', 'Chapter4', 'Chapter5', 'Chapter6']
+	const chapters: string[] = [];
+	for (let i = 0; i < 25; i++) {
+		chapters.push('Chapter' + (i).toString());
+	}　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
 	return (
-		<div>
+		<ContentsContainer>
 			<AppHeaderContainer>
 				<Title title="Math Problems Tutor"/>
 			</AppHeaderContainer>
-			<ContentsContainer>
-				<ContentsFrame>
-					{chapters.map((chapter) => (
-						<div className="App-Chapter-Box">
-							<div className="App-Chapter-Text-Frame">
-								<p className="App-Chapter-Text">{chapter}</p>
-							</div>
+			<ContentsFrame>
+				{chapters.map((chapter) => (
+					<div className="App-Chapter-Box">
+						<div className="App-Chapter-Text-Frame">
+							<p className="App-Chapter-Text">{chapter}</p>
 						</div>
-					))}
-				</ContentsFrame>
-			</ContentsContainer>
-		</div>
+					</div>
+				))}
+			</ContentsFrame>
+		</ContentsContainer>
 	)
 }
 
