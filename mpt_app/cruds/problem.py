@@ -12,7 +12,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 async def get_problems(
-        db: AsyncSession) -> list[int, str, str, bool] | None:
+        db: AsyncSession
+        ) -> list[problem_model.Problem] | None:
+    
     result: Result = await db.execute(select(
         problem_model.Problem.id, 
         problem_model.Problem.title, 
@@ -20,13 +22,20 @@ async def get_problems(
         problem_model.Problem.is_solved
         )
     )
+
     return result.all()
 
-async def get_problem(db: AsyncSession, problem_id: int) -> problem_model.Problem | None:
+
+async def get_problem(
+        db: AsyncSession, 
+        problem_id: int
+        ) -> problem_model.Problem | None:
+
     result : Result  = await db.execute(
         select(problem_model.Problem).filter(problem_model.Problem.id == problem_id)
     )
     problem : tuple(problem_model.Problem) | None = result.first()
+
     return problem[0] if problem[0] is not None else None
 
 async def create_problem(
@@ -56,3 +65,4 @@ async def delete_problem(
         ) -> None:
     await db.delete(problem)
     await db.commit()
+    
