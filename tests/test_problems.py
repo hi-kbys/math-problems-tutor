@@ -6,7 +6,8 @@ from sqlalchemy.orm import sessionmaker
 import starlette.status
 
 from mpt_app.main import app
-from mpt_app.db import Base, get_db
+from mpt_app.db.base import Base
+from mpt_app.db.session import get_db
 
 ASYNC_DB_URL = "sqlite+aiosqlite:///:memory:"
 

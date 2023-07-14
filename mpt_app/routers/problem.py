@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 import mpt_app.cruds.problem as problem_crud
 import mpt_app.schemas.problem as problem_schema
-from mpt_app.db import get_db
+from mpt_app.db.session import get_db
 
 router = APIRouter()
 
