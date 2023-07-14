@@ -38,6 +38,7 @@ async def get_problem(
 
     return problem[0] if problem[0] is not None else None
 
+
 async def create_problem(
         db: AsyncSession, problem_create: problem_schema.ProblemCreate
         ) -> problem_model.Problem:
@@ -46,6 +47,7 @@ async def create_problem(
     await db.commit()
     await db.refresh(problem)
     return problem
+
 
 async def update_problem(
         db: AsyncSession, 
@@ -59,6 +61,7 @@ async def update_problem(
     await db.commit()
     await db.refresh(problem)
     return problem
+
 
 async def delete_problem(
         db: AsyncSession, problem: problem_model.Problem
