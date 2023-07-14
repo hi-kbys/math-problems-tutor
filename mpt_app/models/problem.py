@@ -11,8 +11,8 @@ if TYPE_CHECKING:
 class Problem(Base):
     __tablename__ = "problems"
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String(1024))
-    statement = Column(String(1024))
+    title = Column(String(100))
+    statement = Column(String(512))
     is_solved = Column(Boolean, default=False)
     chapter_id = Column(Integer, ForeignKey("chapters.id"))
     chapter = relationship("Chapter", back_populates="problems")

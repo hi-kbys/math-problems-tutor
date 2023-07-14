@@ -11,6 +11,6 @@ if TYPE_CHECKING:
 class Chapter(Base):
     __tablename__ = "chapters"
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String(1024), index=True)
+    title = Column(String(100), index=True)
     school_year = Column(Integer, index=True)
     problems = relationship("Problem", back_populates="chapter")
