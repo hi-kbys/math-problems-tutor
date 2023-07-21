@@ -2,74 +2,74 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from sqlalchemy import select
 from sqlalchemy.engine import Result
-from mpt_app.models.chapter import Chapter
-from mpt_app.schemas.chapter import ChapterCreate, ChapterUpdate
+from mpt_app.models.unit import Unit
+from mpt_app.schemas.unit import UnitCreate, UnitUpdate
 
 
-async def get_chapters(
+async def get_units(
         db: AsyncSession
-        ) -> list[Chapter] | None:
+        ) -> list[Unit] | None:
     """
-    Get all chapters
+    Get all units
     """
     result: Result = await db.execute(
         select(
-        Chapter
+        Unit
         )
     )
     return result.scalars().all()
 
 
-async def get_chapter(
+async def get_unit(
         db: AsyncSession, 
-        chapter_id: int
-        ) -> Chapter | None:
+        unit_id: int
+        ) -> Unit | None:
     """
-    Get a chapter by id
+    Get a unit by id
     """
     result : Result  = await db.execute(
-        select(Chapter).filter(Chapter.id == chapter_id)
+        select(Unit).filter(Unit.id == unit_id)
     )
-    chapter : tuple(Chapter) | None = result.first()
-    return chapter[0] if chapter[0] is not None else None
+    unit : tuple(Unit) | None = result.first()
+    return unit[0] if unit[0] is not None else None
 
 
-async def create_chapter(
+async def create_unit(
         db: AsyncSession,
-        chapter_create: ChapterCreate
-        ) -> Chapter:
+        unit_create: UnitCreate
+        ) -> Unit:
     """
-    Create a chapter
+    Create a unit
     """
-    chapter = Chapter(**chapter_create.dict())
-    db.add(chapter)
+    unit = Unit(**unit_create.dict())
+    db.add(unit)
     await db.commit()
-    await db.refresh(chapter)
-    return chapter
+    await db.refresh(unit)
+    return unit
 
 
-async def update_chapter(
+async def update_unit(
         db: AsyncSession, 
-        chapter_update: ChapterUpdate,
-        chapter: Chapter
-        ) -> Chapter:
+        unit_update: UnitUpdate,
+        unit: Unit
+        ) -> Unit:
     """
-    Update a chapter
+    Update a unit
     """
-    chapter.title = chapter_update.title
-    chapter.school_year= chapter_update.school_year
-    db.add(chapter)
+    unit.title = unit_update.title
+    unit.school_year= unit_update.school_year
+    db.add(unit)
     await db.commit()
-    await db.refresh(chapter)
-    return chapter
+    await db.refresh(unit)
+    return unit
 
-async def delete_chapter(
+async def delete_unit(
         db: AsyncSession, 
-        chapter: Chapter
-        ) -> Chapter:
+        unit: Unit
+        ) -> Unit:
     """
-    Delete a chapter
+    Delete a unit
     """
-    await db.delete(chapter)
+    await db.delete(unit)
     await db.commit()
-    return chapter
+    return unit

@@ -1,57 +1,57 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-import mpt_app.cruds.chapter as chapter_crud
-import mpt_app.schemas.chapter as chapter_schema
+import mpt_app.cruds.unit as unit_crud
+import mpt_app.schemas.unit as unit_schema
 from mpt_app.db.session import get_db
 
 router = APIRouter()
 
-@router.get("/chapters", response_model=list[chapter_schema.Chapter], 
-    summary="Get all chapters"
+@router.get("/units", response_model=list[unit_schema.Unit], 
+    summary="Get all units"
     )
-async def list_chapters(
+async def list_units(
     db: AsyncSession = Depends(get_db)
-    )-> list[chapter_schema.Chapter]:
-    return await chapter_crud.get_chapters(db)
+    )-> list[unit_schema.Unit]:
+    return await unit_crud.get_units(db)
 
-@router.get("/chapters/{chapter_id}", response_model=chapter_schema.Chapter)
-async def get_chapter(
-    chapter_id: int, 
+@router.get("/units/{unit_id}", response_model=unit_schema.Unit)
+async def get_unit(
+    unit_id: int, 
     db: AsyncSession = Depends(get_db)
-    )-> chapter_schema.Chapter:
-    chapter = await chapter_crud.get_chapter(db, chapter_id)
-    if chapter is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Chapter not found")
-    return chapter
+    )-> unit_schema.Unit:
+    unit = await unit_crud.get_unit(db, unit_id)
+    if unit is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Unit not found")
+    return unit
 
-@router.post("/chapters", response_model=chapter_schema.ChapterCreateResponse)
-async def create_chapter(
-    chapter_create: chapter_schema.ChapterCreate,
+@router.post("/units", response_model=unit_schema.UnitCreateResponse)
+async def create_unit(
+    unit_create: unit_schema.UnitCreate,
     db: AsyncSession = Depends(get_db)
-    )-> chapter_schema.ChapterCreateResponse:
-    return await chapter_crud.create_chapter(db, chapter_create)
+    )-> unit_schema.UnitCreateResponse:
+    return await unit_crud.create_unit(db, unit_create)
 
-@router.put("/chapters/{chapter_id}", response_model=chapter_schema.Chapter)
-async def update_chapter(
-    chapter_id: int,
-    chapter_update: chapter_schema.ChapterUpdate,
+@router.put("/units/{unit_id}", response_model=unit_schema.Unit)
+async def update_unit(
+    unit_id: int,
+    unit_update: unit_schema.UnitUpdate,
     db: AsyncSession = Depends(get_db)
-    )-> chapter_schema.Chapter:
-    chapter = await chapter_crud.get_chapter(db, chapter_id)
-    if chapter is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Chapter not found")
-    return await chapter_crud.update_chapter(db, chapter_update, chapter)
+    )-> unit_schema.Unit:
+    unit = await unit_crud.get_unit(db, unit_id)
+    if unit is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Unit not found")
+    return await unit_crud.update_unit(db, unit_update, unit)
 
 
-@router.delete("/chapters/{chapter_id}", response_model=None)
+@router.delete("/units/{unit_id}", response_model=None)
 async def delete_chpater(
-    chapter_id: int,
+    unit_id: int,
     db: AsyncSession = Depends(get_db)
     )-> None:
-    chapter = await chapter_crud.get_chapter(db, chapter_id)
-    if chapter is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Chapter not found")
-    chapter = await chapter_crud.delete_chapter(db, chapter)
+    unit = await unit_crud.get_unit(db, unit_id)
+    if unit is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Unit not found")
+    unit = await unit_crud.delete_unit(db, unit)
     # 一旦Noneを返す
     return None

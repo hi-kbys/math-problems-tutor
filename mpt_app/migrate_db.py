@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 
 from mpt_app.models.problem import Base
-from mpt_app.models.chapter import Base
+from mpt_app.models.unit import Base
 
 DB_URL = "mysql+mysqlconnector://root@db:3306/mpt?charset=utf8"
 engine = create_engine(DB_URL, echo=True)

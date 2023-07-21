@@ -67,7 +67,7 @@
   overflow-y: scroll;
 }
 
-.App-Chapter-Box{
+.App-Unit-Box{
   width: 452px;
   height: 88px;
   flex-shrink: 0;
@@ -80,7 +80,7 @@
   margin: 18px 0px 18px 0px;
 }
 
-.App-Chapter-Text-Frame{
+.App-Unit-Text-Frame{
   display: flex;
   width: 160px;
   height: 44.376px;
@@ -89,7 +89,7 @@
   flex-shrink: 0;
 }
 
-.App-Chapter-Text{
+.App-Unit-Text{
   color: #FFF;
   text-align: center;
   font-size: 32px;
