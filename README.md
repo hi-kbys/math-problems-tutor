@@ -31,7 +31,7 @@
     db_migrate.pyを実行してデータベースを作成します。
     ```bash
     docker-compose exec 
-    mpt_app poetry run python -m mpt_app.db_migrate
+    mpt_app poetry run python -m mpt_app.migrate_db
     ```
 1. アクセスの確認
     フロントはhttp://localhost:3000 にアクセスして、Reactの画面が表示されればOKです。
