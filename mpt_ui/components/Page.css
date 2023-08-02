@@ -1,0 +1,42 @@
+.App {
+    text-align: center;
+  }
+
+.App-header {
+display: flex;
+width: 1920px;
+height: 66px;
+padding: 0px 1809px 0px 45px;
+align-items: center;
+flex-shrink: 0;
+box-sizing: border-box;
+background: #FFFFFF;
+}
+
+.App-Contents{
+background: var(--second, #BADBF3);
+width: 1920px;
+height: 1080px;
+display: flex;
+padding-bottom: 10px;
+flex-direction: column;
+align-items: center;
+gap: 31px;
+box-sizing: border-box;
+/* 余白で子要素を中央に持ってくる */
+/* justify-content: center; */
+}
+
+.App-Contents-Frame{
+width: 1495px;
+height: 796px;
+flex-shrink: 0;
+border-radius: 20px;
+background: var(--d-9-d-9-d-9, #FAFDFF);  
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+padding: 32px 36px 0px 36px;
+box-sizing: border-box;
+overflow-y: scroll;
+}

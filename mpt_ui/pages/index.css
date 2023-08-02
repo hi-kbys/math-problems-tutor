@@ -1,0 +1,32 @@
+.App-Unit-Box{
+width: 452px;
+height: 88px;
+flex-shrink: 0;
+background: #2693E1;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 18px 0px 18px 0px;
+}
+
+.App-Unit-Text-Frame{
+display: flex;
+width: 160px;
+height: 44.376px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.App-Unit-Text{
+color: #FFF;
+text-align: center;
+font-size: 32px;
+font-family: Hanuman;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+    

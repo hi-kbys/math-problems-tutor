@@ -21,7 +21,7 @@ services:
       - mpt_ui_node_modules:/app/node_modules
     depends_on:
       - mpt_app
-    command: yarn start
+    command: yarn dev
   
   db:
     image: mysql:8.0
