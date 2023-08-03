@@ -29,4 +29,13 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
+
+.Problem-Frame{
+    width: 50%
+}
+
+.Question-Frame{
+    width: 45%;
+    align-items: center;
+}
     

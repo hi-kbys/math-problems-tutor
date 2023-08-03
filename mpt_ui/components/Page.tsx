@@ -14,6 +14,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	return (
 		<header className="App-header">
 			<div>{props.title}</div>
+			<div>Githubアイコン（予定）</div>
 		</header>
 	);
 }
