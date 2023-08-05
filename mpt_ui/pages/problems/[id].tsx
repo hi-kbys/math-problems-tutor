@@ -1,4 +1,4 @@
-import React, {useState, useEffect, use} from 'react';
+import React, {useState, useEffect, FormEvent} from 'react';
 import {NextPage} from 'next';
 import problems from './problems.module.css';
 import Page from 'components/Page';
@@ -20,31 +20,53 @@ const ProblemFrame: React.FC = () => {
 
 	return (
 		<div className={problems.Problem_Frame}>
-			<div className="Problem-Frame-Title">問題1</div>
+			<div>問題1</div>
 			<div className="Problem-Frame-Contents">{problemStatement}</div>
 		</div>
 	)
 }
 
+
+// 送信後の挙動
+
+// chatの取得
+
 // 質問の枠
+
 const QAFrame: React.FC = () => {
 	// 質問は動的に増えるので、配列で管理する
 	const exampleQAList: string[] = ["ほげがわかりません", "ふがはいかがでしょう", "ぴよについて教えて"];
-
 	const [chats, setChats] = useState<string[]>(exampleQAList);
+	console.log(chats);
 
+	const [message, setMessage] = useState<string>("");
+
+	// 送信ボタンを押したときの挙動
+	const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setChats([...chats, message]);
+		setMessage("");
+	}
+	
 	// 表示前に一度だけ質問を取得する
 	useEffect(() => {
 		return () => {
 			
 		}
-	}, [chats])
+	}, [])
+
 
 	return (
 		<div className={problems.Question_Frame}>
 			{chats.map((message) => (
 				<div className="Question-Frame-Contents">{message}</div>
 			))}
+			<div className={problems.Send_Message_Form}>
+				<form onSubmit={sendMessage}>
+					<input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+					<input type="submit" value="送信" />
+				</form>
+			</div>
 		</div>
 	)
 }
