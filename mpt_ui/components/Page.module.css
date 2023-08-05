@@ -2,7 +2,7 @@
     text-align: center;
   }
 
-.App-header {
+.App_header {
   display: flex;
   width: 1920px;
   height: 60px;
@@ -23,7 +23,7 @@ box-sizing: border-box;
 background: #FFFFFF; */
 }
 
-.App-Contents{
+.App_Contents{
 background: var(--second, #BADBF3);
 width: 1920px;
 height: 1020px;
@@ -37,7 +37,7 @@ box-sizing: border-box;
 /* justify-content: center; */
 }
 
-.App-Contents-Frame{
+.App_Contents_Frame{
   width: 1495px;
   height: 941px;
   flex-shrink: 0;

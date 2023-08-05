@@ -1,7 +1,6 @@
 import React from 'react';
-import Head from 'next/head';
 import {NextPage} from 'next';
-import './index.css';
+import index from './index.module.css';
 import Page from 'components/Page';
 
 const AllProblemPage : NextPage = () => {
@@ -12,9 +11,9 @@ const AllProblemPage : NextPage = () => {
 	return (
 		<Page>
             {units.map((unit) => (
-                <div className="App-Unit-Box">
-                    <div className="App-Unit-Text-Frame">
-                        <p className="App-Unit-Text">{unit}</p>
+                <div className={index.App_Unit_Box} key={unit}>
+                    <div className={index.App_Unit_Text_Frame}>
+                        <p className={index.App_Unit_Text}>{unit}</p>
                     </div>
                 </div>
             ))}

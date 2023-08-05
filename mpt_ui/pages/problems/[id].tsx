@@ -1,9 +1,7 @@
 import React, {useState, useEffect, use} from 'react';
-import Head from 'next/head';
 import {NextPage} from 'next';
-import './problems.css';
+import problems from './problems.module.css';
 import Page from 'components/Page';
-import { userAgent } from 'next/server';
 
 // 問題の枠
 const ProblemFrame: React.FC = () => {
@@ -21,7 +19,7 @@ const ProblemFrame: React.FC = () => {
 	}, [problemStatement])
 
 	return (
-		<div className="Problem-Frame">
+		<div className={problems.Problem_Frame}>
 			<div className="Problem-Frame-Title">問題1</div>
 			<div className="Problem-Frame-Contents">{problemStatement}</div>
 		</div>
@@ -43,7 +41,7 @@ const QAFrame: React.FC = () => {
 	}, [chats])
 
 	return (
-		<div className="Question-Frame">
+		<div className={problems.Question_Frame}>
 			{chats.map((message) => (
 				<div className="Question-Frame-Contents">{message}</div>
 			))}

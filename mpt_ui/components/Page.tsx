@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import {NextPage} from 'next';
-import './Page.css';
+import page from './Page.module.css';
 import { getImgProps } from 'next/dist/shared/lib/get-img-props';
 
 
@@ -10,11 +11,15 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
+
 	// ヘッダーの枠
 	return (
-		<header className="App-header">
+		<header className={page.App_header}>
 			<div>{props.title}</div>
-			<div>Githubアイコン（予定）</div>
+			<Link href="https://github.com/abist-kobayashi/math-problems-tutor" passHref>
+				<img src="github.svg" alt="github" />
+      		</Link>
+			
 		</header>
 	);
 }
@@ -26,8 +31,8 @@ type ContentsContainerProps = {
 
 const ContentsContainer: React.FC<ContentsContainerProps> = (props) => {
 	return (
-		<div className="App-Contents">
-            <div className="App-Contents-Frame">
+		<div className={page.App_Contents}>
+            <div className={page.App_Contents_Frame}>
 			    {props.children}
 		    </div>
 		</div>
@@ -51,4 +56,5 @@ const Page: NextPage<PageProps> = (props) => {
     );
 
 }
+
 export default Page

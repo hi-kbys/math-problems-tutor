@@ -1,4 +1,4 @@
-.App-Unit-Box{
+.App_Unit_Box{
 width: 452px;
 height: 88px;
 flex-shrink: 0;
@@ -11,7 +11,7 @@ align-items: center;
 margin: 18px 0px 18px 0px;
 }
 
-.App-Unit-Text-Frame{
+.App_Unit_Text_Frame{
 display: flex;
 width: 160px;
 height: 44.376px;
@@ -20,7 +20,7 @@ justify-content: center;
 flex-shrink: 0;
 }
 
-.App-Unit-Text{
+.App_Unit_Text{
 color: #FFF;
 text-align: center;
 font-size: 32px;
